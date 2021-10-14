@@ -41,3 +41,19 @@
 
 - preview of real-time collaborative coding functionality
 - automatic conversion from Create React App to Next.js compatible form
+
+### Questions
+
+##### Why everything (all page components) are rendered at least twice?
+
+I guess because Pages in next.js are server side rendered (or pre-rendered).
+So in this case when next.js is rendering your page(server side), the script will console.log("Index Component Called") then on your frontend react it's hydrating so all the code coming from the server should be executed again.
+In next.js you can execute Server Side code inside getInitialProps, and in pages only not components.
+
+Also has to do with strict mode
+
+```js
+module.exports = {
+  reactStrictMode: true,
+};
+```
